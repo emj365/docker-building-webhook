@@ -5,7 +5,7 @@ tag=$TAG
 ts=$(date +%s)
 
 cd repo
-git fetch origin $branch:refs/remotes/origin/$branch
+git fetch origin $branch
 mkdir ../refs/$ts
 git --work-tree=$(pwd)/../refs/$ts checkout origin/$branch -- .
 echo "fetched: $ts $branch"
