@@ -8,6 +8,7 @@ var crypto = require('crypto')
 
 var app = express()
 
+var PORT = process.env['PORT'] || 80
 var SECERT = process.env['SECERT']
 var REPO_URL = process.env['REPO_URL']
 var BRANCH = process.env['BRANCH']
@@ -69,6 +70,6 @@ app.post('/', function(req, res) {
   }
 })
 
-app.listen(80, function() {
-  console.log('app listening on port 80!')
+app.listen(PORT, function() {
+  console.log(`app listening on port ${PORT}!`)
 })
