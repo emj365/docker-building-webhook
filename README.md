@@ -18,12 +18,20 @@ When branch pushed it will:
 * node
 * pm2
 
-### NodeJS
+### Node
 
-```
+```bash
 npm install -g yarn
 cd <directory of this readme>
 yarn install
+```
+
+## Preparaction
+
+```bash
+cd <directory of this readme>
+mkdir refs
+git clone -b <branch> --single-branch <git://sub.domain.com/repo.git> repo
 ```
 
 ## Example
