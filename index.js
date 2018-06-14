@@ -1,5 +1,5 @@
 // Example:
-// SECERT=abc123 REPO_URL='https://github.com/emj365/prepsmith' BRANCH='staging' yarn start
+// SECERT=abc123 REPO_URL='https://github.com/emj365/prepsmith' BRANCH='staging' TAG='emj365/prepsmith:latest' yarn start
 
 var express = require('express')
 var bodyParser = require('body-parser')
