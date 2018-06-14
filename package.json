@@ -1,5 +1,5 @@
 {
-  "name": "webhook",
+  "name": "docker-building-webhook",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
