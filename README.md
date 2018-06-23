@@ -16,7 +16,6 @@ When branch pushed it will:
 * git
 * docker
 * node
-* pm2
 
 ### Node
 

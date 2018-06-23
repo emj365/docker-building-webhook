@@ -1,0 +1,26 @@
+version: '3'
+services:
+  web:
+    image: emj365/docker-build-webhook
+    environment:
+      - SECERT=secert-key
+      - REPO_URL=https://github.com/emj365/prepsmith
+      - BRANCH=staging
+      - TAG=emj365/prepsmith:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /root/.docker/config.json:/root/.docker/config.json
+    networks:
+      - default
+      - traefik-net
+    deploy:
+      restart_policy:
+        condition: any
+      labels:
+        - "traefik.port=80"
+        - "traefik.docker.network=traefik-net"
+        - "traefik.frontend.rule=Host:prepsmith-docker-build-webhook.emj365.com"
+
+networks:
+  traefik-net:
+    external: true
