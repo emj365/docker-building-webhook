@@ -1,7 +1,7 @@
 version: '3.3'
 services:
   web:
-    image: emj365/docker-build-webhook:1.0.9
+    image: emj365/docker-build-webhook:1.0.11
     environment:
       - SECERT=secert-key
       - REPO_SSH_URL=git@github.com:emj365/prepsmith.git
@@ -10,11 +10,11 @@ services:
       - TAG=emj365/prepsmith:latest
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - /root/.docker/config.json:/root/.docker/config.json
     secrets:
+      - docker-config
       - prepsmith-repo-key
     networks:
-      - default
+      - ps-docker-build-webhook
       - traefik-net
     deploy:
       restart_policy:
@@ -22,12 +22,15 @@ services:
       labels:
         - "traefik.port=80"
         - "traefik.docker.network=traefik-net"
-        - "traefik.frontend.rule=Host:prepsmith-docker-build-webhook.emj365.com"
+        - "traefik.frontend.rule=Host:ps-docker-build-webhook.emj365.com"
 
 networks:
+  ps-docker-build-webhook:
   traefik-net:
     external: true
 
 secrets:
+  docker-config:
+    external: true
   prepsmith-repo-key:
     external: true

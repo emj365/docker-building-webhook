@@ -12,8 +12,11 @@ RUN mkdir /usr/src/app/refs
 
 EXPOSE 80
 
-RUN mkdir /root/.ssh
-CMD cp /run/secrets/prepsmith-repo-key /root/.ssh/id_rsa && \
+RUN mkdir /root/.ssh && \
+    mkdir /root/.docker
+
+CMD cp /run/secrets/docker-config /root/.docker/config.json && \
+    cp /run/secrets/prepsmith-repo-key /root/.ssh/id_rsa && \
     chmod 400 /root/.ssh/id_rsa && \
     ssh-keyscan -t rsa github.com > ~/.ssh/known_hosts && \
     git clone -b $BRANCH --single-branch $REPO_SSH_URL repo && \
