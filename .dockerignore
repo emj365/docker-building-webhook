@@ -3,3 +3,8 @@ refs/
 repo/
 npm-debug.log
 yarn-error.log
+Dockerfile
+docker-swarm.yml
+.git
+.dockerignore
+.gitignore
